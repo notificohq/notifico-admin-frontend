@@ -48,7 +48,7 @@ export const TemplatesEmailEdit = () => (
       <TextInput source="template.from" />
       <TextInput source="template.subject" />
       <TextInput source="template.body_plaintext" />
-      <RichTextInput source="template.body_html" />
+      <TextField source="template.body_html" />
     </SimpleForm>
   </Edit>
 );
@@ -62,7 +62,7 @@ export const TemplatesEmailCreate = () => (
       <TextInput source="template.from" />
       <TextInput source="template.subject" />
       <TextInput source="template.body_plaintext" />
-      <RichTextInput source="template.body_html" />
+      <TextField source="template.body_html" />
     </SimpleForm>
   </Create>
 );
