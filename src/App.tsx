@@ -16,6 +16,7 @@ import { PipelineCreate, PipelineEdit, PipelineList, PipelineShow } from "./enti
 import { TemplatesEmailCreate, TemplatesEmailEdit, TemplatesEmailList, TemplatesEmailShow } from "./entities/templates/email.tsx";
 import { TemplatesTelegramCreate, TemplatesTelegramEdit, TemplatesTelegramList, TemplatesTelegramShow } from "./entities/templates/telegram.tsx";
 import { TemplatesSlackCreate, TemplatesSlackEdit, TemplatesSlackList, TemplatesSlackShow } from "./entities/templates/slack.tsx";
+import { TemplatesPushoverCreate, TemplatesPushoverEdit, TemplatesPushoverList } from "./entities/templates/pushover.tsx";
 
 export const App = () => (
   <Admin disableTelemetry layout={Layout} dataProvider={dataProvider}>
@@ -68,6 +69,13 @@ export const App = () => (
       edit={TemplatesSlackEdit}
       show={TemplatesSlackShow}
       create={TemplatesSlackCreate}
+    />
+    <Resource
+      name="templates/pushover"
+      list={TemplatesPushoverList}
+      edit={TemplatesPushoverEdit}
+      show={TemplatesPushoverEdit}
+      create={TemplatesPushoverCreate}
     />
   </Admin>
 );
