@@ -11,7 +11,6 @@ import {
   List,
   Datagrid, Create
 } from "react-admin";
-import { RichTextInput } from "ra-input-rich-text";
 
 export const TemplatesEmailList = () => (
   <List>
@@ -48,7 +47,7 @@ export const TemplatesEmailEdit = () => (
       <TextInput source="template.from" />
       <TextInput source="template.subject" />
       <TextInput source="template.body_plaintext" />
-      <TextField source="template.body_html" />
+      <TextInput source="template.body_html" multiline={true} />
     </SimpleForm>
   </Edit>
 );
@@ -62,7 +61,7 @@ export const TemplatesEmailCreate = () => (
       <TextInput source="template.from" />
       <TextInput source="template.subject" />
       <TextInput source="template.body_plaintext" />
-      <TextField source="template.body_html" />
+      <TextInput source="template.body_html" multiline={true} />
     </SimpleForm>
   </Create>
 );

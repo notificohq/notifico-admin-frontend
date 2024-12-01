@@ -13,7 +13,7 @@ import { SubscriptionEdit, SubscriptionList, SubscriptionShow } from "./entities
 import { ProjectCreate, ProjectEdit, ProjectList, ProjectShow } from "./entities/projects.tsx";
 import { EventCreate, EventEdit, EventList, EventShow } from "./entities/events.tsx";
 import { PipelineCreate, PipelineEdit, PipelineList, PipelineShow } from "./entities/pipelines.tsx";
-import { TemplatesEmailCreate, TemplatesEmailEdit, TemplatesEmailList, TemplatesEmailShow } from "./entities/templates.tsx";
+import { TemplatesEmailCreate, TemplatesEmailEdit, TemplatesEmailList, TemplatesEmailShow } from "./entities/templates/email.tsx";
 import { TemplatesTelegramCreate, TemplatesTelegramEdit, TemplatesTelegramList, TemplatesTelegramShow } from "./entities/templates/telegram.tsx";
 import { TemplatesSlackCreate, TemplatesSlackEdit, TemplatesSlackList, TemplatesSlackShow } from "./entities/templates/slack.tsx";
 
