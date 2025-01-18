@@ -1,22 +1,44 @@
 import {
   Admin,
   Resource,
-  // ListGuesser,
-  // EditGuesser,
-  // ShowGuesser,
+  ListGuesser,
+  EditGuesser,
+  ShowGuesser,
 } from "react-admin";
 import { Layout } from "./Layout";
 import { dataProvider } from "./dataProvider";
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
-import ArchitectureIcon from '@mui/icons-material/Architecture';
-import { SubscriptionEdit, SubscriptionList, SubscriptionShow } from "./entities/subscription.tsx";
-import { ProjectCreate, ProjectEdit, ProjectList, ProjectShow } from "./entities/projects.tsx";
-import { EventCreate, EventEdit, EventList, EventShow } from "./entities/events.tsx";
-import { PipelineCreate, PipelineEdit, PipelineList, PipelineShow } from "./entities/pipelines.tsx";
-import { TemplatesEmailCreate, TemplatesEmailEdit, TemplatesEmailList, TemplatesEmailShow } from "./entities/templates/email.tsx";
-import { TemplatesTelegramCreate, TemplatesTelegramEdit, TemplatesTelegramList, TemplatesTelegramShow } from "./entities/templates/telegram.tsx";
-import { TemplatesSlackCreate, TemplatesSlackEdit, TemplatesSlackList, TemplatesSlackShow } from "./entities/templates/slack.tsx";
-import { TemplatesPushoverCreate, TemplatesPushoverEdit, TemplatesPushoverList } from "./entities/templates/pushover.tsx";
+import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
+import ArchitectureIcon from "@mui/icons-material/Architecture";
+import PersonIcon from '@mui/icons-material/Person';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import TextSnippetIcon from '@mui/icons-material/TextSnippet';
+import GroupIcon from '@mui/icons-material/Group';
+import {
+  SubscriptionEdit,
+  SubscriptionList,
+  SubscriptionShow,
+} from "./entities/subscription.tsx";
+import {
+  ProjectCreate,
+  ProjectEdit,
+  ProjectList,
+  ProjectShow,
+} from "./entities/projects.tsx";
+import {
+  EventCreate,
+  EventEdit,
+  EventList,
+  EventShow,
+} from "./entities/events.tsx";
+import {
+  PipelineCreate,
+  PipelineEdit,
+  PipelineList,
+  PipelineShow,
+} from "./entities/pipelines.tsx";
+import { RecipientCreate, RecipientEdit, RecipientList, RecipientShow } from "./entities/recipients.tsx";
+import { TemplatesCreate, TemplatesEdit, TemplatesList, TemplatesShow } from "./entities/templates/generic.tsx";
+import { ContactCreate, ContactEdit, ContactList, ContactShow } from "./entities/contact.tsx";
 
 export const App = () => (
   <Admin disableTelemetry layout={Layout} dataProvider={dataProvider}>
@@ -44,38 +66,41 @@ export const App = () => (
       create={PipelineCreate}
     />
     <Resource
+      name="recipients"
+      list={RecipientList}
+      show={RecipientShow}
+      edit={RecipientEdit}
+      create={RecipientCreate}
+      icon={PersonIcon}
+    />
+    <Resource
+      name="contacts"
+      list={ContactList}
+      show={ContactShow}
+      edit={ContactEdit}
+      create={ContactCreate}
+      icon={ContactsIcon}
+    />
+    <Resource
+      name="groups"
+      list={ListGuesser}
+      show={ShowGuesser}
+      edit={EditGuesser}
+      icon={GroupIcon}
+    />
+    <Resource
       name="subscriptions"
       list={SubscriptionList}
-      edit={SubscriptionEdit}
       show={SubscriptionShow}
+      edit={SubscriptionEdit}
     />
     <Resource
-      name="templates/email"
-      list={TemplatesEmailList}
-      edit={TemplatesEmailEdit}
-      show={TemplatesEmailShow}
-      create={TemplatesEmailCreate}
-    />
-    <Resource
-      name="templates/telegram"
-      list={TemplatesTelegramList}
-      edit={TemplatesTelegramEdit}
-      show={TemplatesTelegramShow}
-      create={TemplatesTelegramCreate}
-    />
-    <Resource
-      name="templates/slack"
-      list={TemplatesSlackList}
-      edit={TemplatesSlackEdit}
-      show={TemplatesSlackShow}
-      create={TemplatesSlackCreate}
-    />
-    <Resource
-      name="templates/pushover"
-      list={TemplatesPushoverList}
-      edit={TemplatesPushoverEdit}
-      show={TemplatesPushoverEdit}
-      create={TemplatesPushoverCreate}
+      name="templates"
+      list={TemplatesList}
+      edit={TemplatesEdit}
+      show={TemplatesShow}
+      create={TemplatesCreate}
+      icon={TextSnippetIcon}
     />
   </Admin>
 );

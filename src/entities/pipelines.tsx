@@ -31,7 +31,6 @@ export const PipelineShow = () => (
       <ReferenceField source="project_id" reference="projects" />
       <ReferenceArrayField source="event_ids" reference="events" />
       <JsonField source="steps" jsonString={true} reactJsonOptions={{displayArrayKey: false, displayDataTypes: false}} />
-      <TextField source="channel" />
     </SimpleShowLayout>
   </Show>
 );
@@ -43,7 +42,6 @@ export const PipelineEdit = () => (
       <ReferenceInput source="project_id" reference="projects" />
       <ReferenceArrayInput source="event_ids" reference="events"/>
       <TextInput source="steps" multiline={true} />
-      <TextInput source="channel" />
     </SimpleForm>
   </Edit>
 );
@@ -55,7 +53,6 @@ export const PipelineCreate = () => (
       <ReferenceInput source="project_id" reference="projects" />
       <ReferenceArrayInput source="event_ids" reference="events"/>
       <TextInput source="steps" defaultValue={[]} multiline={true} />
-      <TextInput source="channel" />
     </SimpleForm>
   </Create>
 );

@@ -11,46 +11,47 @@ import {
   Datagrid, Create
 } from "react-admin";
 
-export const TemplatesSlackList = () => (
+export const TemplatesList = () => (
   <List>
     <Datagrid>
       <TextField source="name" />
-      <TextField source="template.text" />
+      <TextField source="channel" />
+      <TextField source="template.parts.body" />
       <ReferenceField source="project_id" reference="projects" />
     </Datagrid>
   </List>
 );
 
-export const TemplatesSlackShow = () => (
+export const TemplatesShow = () => (
   <Show>
     <SimpleShowLayout>
       <ReferenceField source="project_id" reference="projects" />
       <TextField source="channel" />
       <TextField source="name" />
-      <TextField source="template.text" />
+      <TextField source="template" />
     </SimpleShowLayout>
   </Show>
 );
 
-export const TemplatesSlackEdit = () => (
+export const TemplatesEdit = () => (
   <Edit>
     <SimpleForm>
       <TextInput source="id" readOnly={true} />
       <ReferenceInput source="project_id" reference="projects" />
-      <TextInput source="channel" defaultValue={"slack"} readOnly={true} />
+      <TextInput source="channel" defaultValue={"telegram"} readOnly={true} />
       <TextInput source="name" />
-      <TextInput source="template.text" multiline={true} />
+      <TextInput source="template" multiline={true} />
     </SimpleForm>
   </Edit>
 );
 
-export const TemplatesSlackCreate = () => (
+export const TemplatesCreate = () => (
   <Create>
     <SimpleForm>
       <ReferenceInput source="project_id" reference="projects" />
-      <TextInput source="channel" defaultValue={"slack"} readOnly={true} />
+      <TextInput source="channel" defaultValue={"telegram"} readOnly={true} />
       <TextInput source="name" />
-      <TextInput source="template.text" multiline={true} />
+      <TextInput source="template" multiline={true} />
     </SimpleForm>
   </Create>
 );
