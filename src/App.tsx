@@ -105,6 +105,12 @@ function App() {
 											icon: <TextSnippetIcon/>,
 										},
 									},
+									{
+										name: "channels",
+										meta: {
+											hide: true
+										}
+									}
 								]}
 								options={{
 									syncWithLocation: true,

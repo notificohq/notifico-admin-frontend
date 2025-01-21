@@ -106,6 +106,7 @@ export const TemplateEdit = () => {
 					type="text"
 					label="Channel"
 					name="channel"
+					disabled
 				/>
 				<TextField
 					{...register("name", {

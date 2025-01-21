@@ -19,6 +19,10 @@ export const TemplateCreate = () => {
 		resource: "projects",
 	});
 
+	const {autocompleteProps: channelAutocompleteProps} = useAutocomplete({
+		resource: "channels",
+	});
+
 	return (
 		<Create isLoading={formLoading} saveButtonProps={saveButtonProps}>
 			<Box
@@ -69,22 +73,42 @@ export const TemplateCreate = () => {
 						/>
 					)}
 				/>
-				<TextField
-					{...register("channel", {
-						required: "This field is required",
-					})}
-					error={!!(errors as any)?.channel}
-					helperText={(errors as any)?.channel?.message}
-					margin="normal"
-					fullWidth
-					slotProps={{
-						inputLabel: {
-							shrink: true,
-						},
-					}}
-					type="text"
-					label="Channel"
+				<Controller
+					control={control}
 					name="channel"
+					rules={{required: "This field is required"}}
+					// eslint-disable-next-line
+					defaultValue={null as any}
+					render={({field}) => (
+						<Autocomplete
+							{...channelAutocompleteProps}
+							{...field}
+							onChange={(_, value) => {
+								field.onChange(value);
+							}}
+							getOptionLabel={(item) => {
+								return (item);
+							}}
+							isOptionEqualToValue={(option, value) =>
+								value === undefined ||
+								option?.toString() ===
+								value?.toString()
+							}
+							renderInput={(params) => (
+								<TextField
+									{...params}
+									label="Channel"
+									margin="normal"
+									variant="outlined"
+									error={!!(errors as any)?.channel}
+									helperText={
+										(errors as any)?.channel?.message
+									}
+									required
+								/>
+							)}
+						/>
+					)}
 				/>
 				<TextField
 					{...register("name", {
