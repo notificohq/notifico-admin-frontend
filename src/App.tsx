@@ -112,6 +112,7 @@ function App() {
 									useNewQueryKeys: true,
 									projectId: "zkVVTP-xIcIDA-4qej35",
 									title: {text: "Notifico", icon: <AppIcon/>},
+									disableTelemetry: true
 								}}
 							>
 								<Routes>

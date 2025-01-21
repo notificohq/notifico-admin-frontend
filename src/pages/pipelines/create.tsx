@@ -8,6 +8,9 @@ import {
 } from "@mui/material";
 import {useForm} from "@refinedev/react-hook-form";
 import {Controller} from "react-hook-form";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import {Editor} from "@monaco-editor/react";
 
 export const PipelineCreate = () => {
 	const {
@@ -76,24 +79,26 @@ export const PipelineCreate = () => {
 						/>
 					)}
 				/>
-				<TextField
-					{...register("steps", {
-						required: "This field is required",
-					})}
-					error={!!(errors as any)?.steps}
-					helperText={(errors as any)?.steps?.message}
-					margin="normal"
-					fullWidth
-					slotProps={{
-						inputLabel: {
-							shrink: true,
-						},
-					}}
-					type="text"
-					label="Steps"
-					name="steps"
-					multiline={true}
-				/>
+				<Stack gap={1}>
+					<Typography variant="body1" fontWeight="bold">Steps</Typography>
+					<Controller
+						control={control}
+						rules={{required: "This field is required"}}
+						// eslint-disable-next-line
+						defaultValue={null as any}
+						name="steps"
+						render={({field}) => (
+							<Editor
+								{...field}
+								height="10vh"
+								defaultLanguage="json"
+								onChange={(value) => {
+									field.onChange(value)
+								}}
+							/>
+						)}
+					/>
+				</Stack>
 				<Controller
 					control={control}
 					name="event_ids"
