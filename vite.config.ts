@@ -1,15 +1,18 @@
 import react from "@vitejs/plugin-react";
-import {defineConfig} from "vite";
+import { defineConfig } from "vite";
 
 export default defineConfig({
-	plugins: [react()],
-	build: {
-		rollupOptions: {
-			output: {
-				entryFileNames: `assets/[name].js`,
-				chunkFileNames: `assets/[name].js`,
-				assetFileNames: `assets/[name].[ext]`
-			}
-		}
-	}
+  plugins: [react()],
+  build: {
+    rollupOptions: {
+      output: {
+        entryFileNames: `assets/[name].js`,
+        chunkFileNames: `assets/[name].js`,
+        assetFileNames: `assets/[name].[ext]`,
+        // manualChunks: {
+        //     monaco_editor: ["monaco-editor"]
+        // }
+      },
+    },
+  },
 });
