@@ -62,7 +62,7 @@ export const RecipientCreate = () => {
                 return (
                   projectAutocompleteProps?.options?.find(
                     (p) => p?.id?.toString() === (item?.id ?? item)?.toString(),
-                  )?.name ?? ""
+                  )?.description ?? ""
                 );
               }}
               isOptionEqualToValue={(option, value) =>

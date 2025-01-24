@@ -19,9 +19,9 @@ export const ProjectList = () => {
         minWidth: 50,
       },
       {
-        field: "name",
+        field: "description",
         flex: 1,
-        headerName: "Name",
+        headerName: "Description",
         minWidth: 200,
       },
       {

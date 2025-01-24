@@ -69,7 +69,11 @@ export const RecipientShow = () => {
           Project
         </Typography>
 
-        {projectIsLoading ? <>Loading...</> : <>{projectData?.data?.name}</>}
+        {projectIsLoading ? (
+          <>Loading...</>
+        ) : (
+          <>{projectData?.data?.description}</>
+        )}
       </Stack>
     </Show>
   );

@@ -92,7 +92,7 @@ export const RecipientList = () => {
           return projectIsLoading ? (
             <>Loading...</>
           ) : (
-            projectData?.data?.find((item) => item.id === value)?.name
+            projectData?.data?.find((item) => item.id === value)?.description
           );
         },
       },

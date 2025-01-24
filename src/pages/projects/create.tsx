@@ -19,11 +19,11 @@ export const ProjectCreate = () => {
         autoComplete="off"
       >
         <TextField
-          {...register("name", {
+          {...register("description", {
             required: "This field is required",
           })}
-          error={!!(errors as any)?.name}
-          helperText={(errors as any)?.name?.message}
+          error={!!(errors as any)?.description}
+          helperText={(errors as any)?.description?.message}
           margin="normal"
           fullWidth
           slotProps={{
@@ -32,8 +32,8 @@ export const ProjectCreate = () => {
             },
           }}
           type="text"
-          label="Name"
-          name="name"
+          label="Description"
+          name="description"
         />
       </Box>
     </Create>

@@ -41,7 +41,11 @@ export const TemplateShow = () => {
           Project
         </Typography>
 
-        {projectIsLoading ? <>Loading...</> : <>{projectData?.data?.name}</>}
+        {projectIsLoading ? (
+          <>Loading...</>
+        ) : (
+          <>{projectData?.data?.description}</>
+        )}
         <Typography variant="body1" fontWeight="bold">
           Channel
         </Typography>

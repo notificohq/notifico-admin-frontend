@@ -16,9 +16,9 @@ export const ProjectShow = () => {
         </Typography>
         <TextField value={record?.id} />
         <Typography variant="body1" fontWeight="bold">
-          Name
+          Description
         </Typography>
-        <TextField value={record?.name} />
+        <TextField value={record?.description} />
       </Stack>
     </Show>
   );
