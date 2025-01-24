@@ -41,6 +41,10 @@ export const EventShow = () => {
         </Typography>
         <TextField value={record?.name} />
         <Typography variant="body1" fontWeight="bold">
+          Description
+        </Typography>
+        <TextField value={record?.description} />
+        <Typography variant="body1" fontWeight="bold">
           Enabled
         </Typography>
         <BooleanField value={record?.enabled} />

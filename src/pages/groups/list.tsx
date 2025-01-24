@@ -24,15 +24,19 @@ export const GroupList = () => {
     () => [
       {
         field: "name",
-        flex: 1,
         headerName: "Name",
         minWidth: 200,
       },
       {
-        field: "project_id",
+        field: "description",
         flex: 1,
+        headerName: "Description",
+        minWidth: 200,
+      },
+      {
+        field: "project_id",
         headerName: "Project",
-        minWidth: 300,
+        minWidth: 150,
         renderCell: function render({ value }) {
           return projectIsLoading ? (
             <>Loading...</>

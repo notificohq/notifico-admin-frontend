@@ -24,21 +24,24 @@ export const TemplateList = () => {
     () => [
       {
         field: "name",
-        flex: 1,
         headerName: "Name",
         minWidth: 200,
       },
       {
-        field: "channel",
+        field: "description",
+        headerName: "Description",
+        minWidth: 200,
         flex: 1,
+      },
+      {
+        field: "channel",
         headerName: "Channel",
         minWidth: 200,
       },
       {
         field: "project_id",
-        flex: 1,
         headerName: "Project",
-        minWidth: 300,
+        minWidth: 150,
         renderCell: function render({ value }) {
           return projectIsLoading ? (
             <>Loading...</>

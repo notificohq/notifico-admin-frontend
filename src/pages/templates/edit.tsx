@@ -86,6 +86,21 @@ export const TemplateEdit = () => {
           )}
         />
         <TextField
+          {...register("description")}
+          error={!!(errors as any)?.description}
+          helperText={(errors as any)?.description?.message}
+          margin="normal"
+          fullWidth
+          slotProps={{
+            inputLabel: {
+              shrink: true,
+            },
+          }}
+          type="text"
+          label="Description"
+          name="description"
+        />
+        <TextField
           {...register("channel", {
             required: "This field is required",
           })}

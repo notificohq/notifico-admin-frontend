@@ -96,6 +96,21 @@ export const PipelineEdit = () => {
             />
           )}
         />
+        <TextField
+          {...register("description")}
+          error={!!(errors as any)?.description}
+          helperText={(errors as any)?.description?.message}
+          margin="normal"
+          fullWidth
+          slotProps={{
+            inputLabel: {
+              shrink: true,
+            },
+          }}
+          type="text"
+          label="Description"
+          name="description"
+        />
         <Controller
           control={control}
           name="event_ids"
@@ -163,7 +178,7 @@ export const PipelineEdit = () => {
             control={control}
             rules={{ required: "This field is required" }}
             // eslint-disable-next-line
-            defaultValue={null as any}
+            defaultValue={true}
             name="steps"
             render={({ field }) => (
               <Editor

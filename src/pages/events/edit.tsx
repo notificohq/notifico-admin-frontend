@@ -92,7 +92,7 @@ export const EventEdit = () => {
           control={control}
           name="enabled"
           // eslint-disable-next-line
-          defaultValue={null as any}
+          defaultValue={true}
           render={({ field }) => (
             <FormControlLabel
               label="Enabled"
@@ -124,6 +124,21 @@ export const EventEdit = () => {
           type="text"
           label="Name"
           name="name"
+        />
+        <TextField
+          {...register("description")}
+          error={!!(errors as any)?.description}
+          helperText={(errors as any)?.description?.message}
+          margin="normal"
+          fullWidth
+          slotProps={{
+            inputLabel: {
+              shrink: true,
+            },
+          }}
+          type="text"
+          label="Description"
+          name="description"
         />
       </Box>
     </Edit>

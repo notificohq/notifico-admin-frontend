@@ -39,9 +39,9 @@ export const RecipientList = () => {
         minWidth: 50,
       },
       {
-        field: "extras",
+        field: "description",
         flex: 1,
-        headerName: "Extras",
+        headerName: "Description",
         minWidth: 200,
       },
       {

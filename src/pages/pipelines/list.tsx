@@ -37,9 +37,9 @@ export const PipelineList = () => {
       {
         field: "enabled",
         headerName: "Enabled",
-        minWidth: 100,
+        minWidth: 50,
         renderCell: function render({ value }) {
-          return <Checkbox checked={!!value} />;
+          return <Checkbox checked={!!value} disabled={true} />;
         },
       },
       {
@@ -48,23 +48,14 @@ export const PipelineList = () => {
         minWidth: 50,
       },
       {
-        field: "project_id",
+        field: "description",
+        headerName: "Description",
         flex: 1,
-        headerName: "Project",
-        minWidth: 300,
-        renderCell: function render({ value }) {
-          return projectIsLoading ? (
-            <>Loading...</>
-          ) : (
-            projectData?.data?.find((item) => item.id === value)?.description
-          );
-        },
       },
       {
         field: "event_ids",
-        flex: 1,
         headerName: "Event",
-        minWidth: 300,
+        minWidth: 100,
         renderCell: function render({ value }) {
           return eventIsLoading ? (
             <>Loading...</>
@@ -81,6 +72,18 @@ export const PipelineList = () => {
                 />
               ))}
             </>
+          );
+        },
+      },
+      {
+        field: "project_id",
+        headerName: "Project",
+        minWidth: 150,
+        renderCell: function render({ value }) {
+          return projectIsLoading ? (
+            <>Loading...</>
+          ) : (
+            projectData?.data?.find((item) => item.id === value)?.description
           );
         },
       },

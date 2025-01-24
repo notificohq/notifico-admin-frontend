@@ -36,6 +36,10 @@ export const GroupShow = () => {
           Name
         </Typography>
         <TextField value={record?.name} />
+        <Typography variant="body1" fontWeight="bold">
+          Description
+        </Typography>
+        <TextField value={record?.description} />
       </Stack>
     </Show>
   );

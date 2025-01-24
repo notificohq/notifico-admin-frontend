@@ -32,6 +32,23 @@ export const RecipientShow = () => {
     <Show isLoading={isLoading}>
       <Stack gap={1}>
         <Typography variant="body1" fontWeight="bold">
+          Id
+        </Typography>
+        <TextField value={record?.id} />
+        <Typography variant="body1" fontWeight="bold">
+          Project
+        </Typography>
+
+        {projectIsLoading ? (
+          <>Loading...</>
+        ) : (
+          <>{projectData?.data?.description}</>
+        )}
+        <Typography variant="body1" fontWeight="bold">
+          Description
+        </Typography>
+        {record?.description}
+        <Typography variant="body1" fontWeight="bold">
           Contacts
         </Typography>
         <Stack direction="row" spacing={1}>
@@ -60,19 +77,6 @@ export const RecipientShow = () => {
               <></>
             )}
           </>
-        )}
-        <Typography variant="body1" fontWeight="bold">
-          Id
-        </Typography>
-        <TextField value={record?.id} />
-        <Typography variant="body1" fontWeight="bold">
-          Project
-        </Typography>
-
-        {projectIsLoading ? (
-          <>Loading...</>
-        ) : (
-          <>{projectData?.data?.description}</>
         )}
       </Stack>
     </Show>

@@ -68,6 +68,21 @@ export const TemplateCreate = () => {
             />
           )}
         />
+        <TextField
+          {...register("description")}
+          error={!!(errors as any)?.description}
+          helperText={(errors as any)?.description?.message}
+          margin="normal"
+          fullWidth
+          slotProps={{
+            inputLabel: {
+              shrink: true,
+            },
+          }}
+          type="text"
+          label="Description"
+          name="description"
+        />
         <Controller
           control={control}
           name="channel"

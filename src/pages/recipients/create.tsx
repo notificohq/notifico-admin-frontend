@@ -84,9 +84,25 @@ export const RecipientCreate = () => {
           )}
         />
         <TextField
+          {...register("description")}
+          error={!!(errors as any)?.description}
+          helperText={(errors as any)?.description?.message}
+          margin="normal"
+          fullWidth
+          slotProps={{
+            inputLabel: {
+              shrink: true,
+            },
+          }}
+          type="text"
+          label="Description"
+          name="description"
+        />
+        <TextField
           {...register("extras", {
             required: "This field is required",
           })}
+          defaultValue={"{}"}
           error={!!(errors as any)?.extras}
           helperText={(errors as any)?.extras?.message}
           margin="normal"
@@ -103,7 +119,6 @@ export const RecipientCreate = () => {
         <Controller
           control={control}
           name="group_ids"
-          rules={{ required: "This field is required" }}
           // eslint-disable-next-line
           defaultValue={[] as any}
           render={({ field }) => (
@@ -133,7 +148,6 @@ export const RecipientCreate = () => {
                   variant="outlined"
                   error={!!(errors as any)?.group_ids}
                   helperText={(errors as any)?.group_ids?.message}
-                  required
                 />
               )}
             />

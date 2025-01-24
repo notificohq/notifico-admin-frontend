@@ -74,6 +74,21 @@ export const PipelineCreate = () => {
             />
           )}
         />
+        <TextField
+          {...register("description")}
+          error={!!(errors as any)?.description}
+          helperText={(errors as any)?.description?.message}
+          margin="normal"
+          fullWidth
+          slotProps={{
+            inputLabel: {
+              shrink: true,
+            },
+          }}
+          type="text"
+          label="Description"
+          name="description"
+        />
         <Stack gap={1}>
           <Typography variant="body1" fontWeight="bold">
             Steps
@@ -139,7 +154,7 @@ export const PipelineCreate = () => {
           control={control}
           name="enabled"
           // eslint-disable-next-line
-          defaultValue={null as any}
+          defaultValue={true}
           render={({ field }) => (
             <FormControlLabel
               label="Enabled"

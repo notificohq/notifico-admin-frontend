@@ -28,20 +28,25 @@ export const EventList = () => {
         headerName: "Enabled",
         minWidth: 100,
         renderCell: function render({ value }) {
-          return <Checkbox checked={!!value} />;
+          return <Checkbox checked={!!value} disabled={true} />;
         },
       },
       {
         field: "name",
         flex: 1,
         headerName: "Name",
-        minWidth: 200,
+        minWidth: 100,
+      },
+      {
+        field: "description",
+        flex: 1,
+        headerName: "Description",
+        minWidth: 300,
       },
       {
         field: "project_id",
-        flex: 1,
         headerName: "Project",
-        minWidth: 300,
+        minWidth: 150,
         renderCell: function render({ value }) {
           return projectIsLoading ? (
             <>Loading...</>
