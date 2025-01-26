@@ -33,9 +33,8 @@ export const EventList = () => {
       },
       {
         field: "name",
-        flex: 1,
         headerName: "Name",
-        minWidth: 100,
+        minWidth: 200,
       },
       {
         field: "description",

@@ -83,6 +83,23 @@ export const TemplateCreate = () => {
           label="Description"
           name="description"
         />
+        <TextField
+          {...register("name", {
+            required: "This field is required",
+          })}
+          error={!!(errors as any)?.name}
+          helperText={(errors as any)?.name?.message}
+          margin="normal"
+          fullWidth
+          slotProps={{
+            inputLabel: {
+              shrink: true,
+            },
+          }}
+          type="text"
+          label="Name"
+          name="name"
+        />
         <Controller
           control={control}
           name="channel"
@@ -115,23 +132,6 @@ export const TemplateCreate = () => {
               )}
             />
           )}
-        />
-        <TextField
-          {...register("name", {
-            required: "This field is required",
-          })}
-          error={!!(errors as any)?.name}
-          helperText={(errors as any)?.name?.message}
-          margin="normal"
-          fullWidth
-          slotProps={{
-            inputLabel: {
-              shrink: true,
-            },
-          }}
-          type="text"
-          label="Name"
-          name="name"
         />
         <Stack gap={1}>
           <Typography variant="body1" fontWeight="bold">
