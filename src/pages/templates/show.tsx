@@ -10,7 +10,6 @@ import {
   TableCell,
   TableBody,
   Table,
-  Box,
 } from "@mui/material";
 
 export const TemplateShow = () => {
@@ -27,7 +26,7 @@ export const TemplateShow = () => {
     },
   });
 
-  const template = JSON.parse(record?.template ?? "{}");
+  const template = record?.template ?? {};
   const parts = template.parts ?? {};
 
   return (
@@ -71,7 +70,7 @@ export const TemplateShow = () => {
             </TableHead>
             <TableBody>
               {Object.entries(parts).map(([key, value]) => (
-                <TableRow sx={{ fontFamily: "monospace" }}>
+                <TableRow key={key} sx={{ fontFamily: "monospace" }}>
                   <TableCell>{key}</TableCell>
                   <TableCell>
                     <pre>{value?.toString()}</pre>

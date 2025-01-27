@@ -6,12 +6,17 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        entryFileNames: `assets/[name].js`,
-        chunkFileNames: `assets/[name].js`,
-        assetFileNames: `assets/[name].[ext]`,
-        // manualChunks: {
-        //     monaco_editor: ["monaco-editor"]
-        // }
+        // entryFileNames: `assets/[name].js`,
+        // chunkFileNames: `assets/[name].js`,
+        // assetFileNames: `assets/[name].[ext]`,
+        manualChunks(id) {
+          if (id.includes("monaco-editor")) {
+            return "monaco_editor";
+          }
+          if (id.includes("@mui")) {
+            return "mui";
+          }
+        },
       },
     },
   },
