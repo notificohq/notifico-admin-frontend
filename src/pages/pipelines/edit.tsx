@@ -11,11 +11,14 @@ import { Controller } from "react-hook-form";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Editor } from "@monaco-editor/react";
+import { DevTool } from "@hookform/devtools";
+import { useContext } from "react";
+import { ColorModeContext } from "../../contexts/color-mode";
 
 export const PipelineEdit = () => {
   const {
     saveButtonProps,
-    refineCore: { query },
+    refineCore: { query, formLoading },
     register,
     control,
     formState: { errors },
@@ -33,13 +36,34 @@ export const PipelineEdit = () => {
     defaultValue: pipelinesData?.event_ids,
   });
 
+  const theme = useContext(ColorModeContext);
+
   return (
-    <Edit saveButtonProps={saveButtonProps}>
+    <Edit saveButtonProps={saveButtonProps} isLoading={formLoading}>
       <Box
         component="form"
         sx={{ display: "flex", flexDirection: "column" }}
         autoComplete="off"
       >
+        <Controller
+          control={control}
+          name="enabled"
+          defaultValue={true}
+          render={({ field }) => (
+            <FormControlLabel
+              label="Enabled"
+              control={
+                <Checkbox
+                  {...field}
+                  checked={field.value}
+                  onChange={(event) => {
+                    field.onChange(event.target.checked);
+                  }}
+                />
+              }
+            />
+          )}
+        />
         <TextField
           {...register("id", {
             required: "This field is required",
@@ -114,7 +138,6 @@ export const PipelineEdit = () => {
         <Controller
           control={control}
           name="event_ids"
-          rules={{ required: "This field is required" }}
           // eslint-disable-next-line
           defaultValue={[] as any}
           render={({ field }) => (
@@ -144,29 +167,8 @@ export const PipelineEdit = () => {
                   variant="outlined"
                   error={!!(errors as any)?.event_ids}
                   helperText={(errors as any)?.event_ids?.message}
-                  required
                 />
               )}
-            />
-          )}
-        />
-        <Controller
-          control={control}
-          name="enabled"
-          // eslint-disable-next-line
-          defaultValue={null as any}
-          render={({ field }) => (
-            <FormControlLabel
-              label="Enabled"
-              control={
-                <Checkbox
-                  {...field}
-                  checked={field.value}
-                  onChange={(event) => {
-                    field.onChange(event.target.checked);
-                  }}
-                />
-              }
             />
           )}
         />
@@ -178,21 +180,20 @@ export const PipelineEdit = () => {
             control={control}
             rules={{ required: "This field is required" }}
             // eslint-disable-next-line
-            defaultValue={true}
+            defaultValue={null as any}
             name="steps"
             render={({ field }) => (
               <Editor
                 {...field}
-                height="10vh"
+                height="30vh"
                 defaultLanguage="json"
-                onChange={(value) => {
-                  field.onChange(value);
-                }}
+                theme={theme.mode === "light" ? "light" : "vs-dark"}
               />
             )}
           />
         </Stack>
       </Box>
+      <DevTool control={control} />
     </Edit>
   );
 };

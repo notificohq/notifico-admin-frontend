@@ -1,10 +1,12 @@
-import { Controller, useFormContext, useWatch } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { Box, Tab, TextField } from "@mui/material";
 import { Editor } from "@monaco-editor/react";
 import { useContext, useState } from "react";
 import { ColorModeContext } from "../../contexts/color-mode";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import Stack from "@mui/material/Stack";
+import CodeIcon from "@mui/icons-material/Code";
+import NotesIcon from "@mui/icons-material/Notes";
 
 interface TemplateEditorProps {
   channel: string;
@@ -69,8 +71,18 @@ export const TemplateEditor = ({
               }}
               aria-label="lab API tabs example"
             >
-              <Tab label="HTML" value="1" />
-              <Tab label="Plaintext" value="2" />
+              <Tab
+                label="HTML"
+                value="1"
+                icon={<CodeIcon />}
+                iconPosition={"start"}
+              />
+              <Tab
+                label="Plaintext"
+                value="2"
+                icon={<NotesIcon />}
+                iconPosition={"start"}
+              />
             </TabList>
           </Box>
           <TabPanel value="1" keepMounted={true}>

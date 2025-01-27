@@ -11,6 +11,9 @@ import { Controller } from "react-hook-form";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Editor } from "@monaco-editor/react";
+import { DevTool } from "@hookform/devtools";
+import { useContext } from "react";
+import { ColorModeContext } from "../../contexts/color-mode";
 
 export const PipelineCreate = () => {
   const {
@@ -29,6 +32,8 @@ export const PipelineCreate = () => {
     resource: "events",
   });
 
+  const theme = useContext(ColorModeContext);
+
   return (
     <Create isLoading={formLoading} saveButtonProps={saveButtonProps}>
       <Box
@@ -36,6 +41,25 @@ export const PipelineCreate = () => {
         sx={{ display: "flex", flexDirection: "column" }}
         autoComplete="off"
       >
+        <Controller
+          control={control}
+          name="enabled"
+          defaultValue={true}
+          render={({ field }) => (
+            <FormControlLabel
+              label="Enabled"
+              control={
+                <Checkbox
+                  {...field}
+                  checked={field.value}
+                  onChange={(event) => {
+                    field.onChange(event.target.checked);
+                  }}
+                />
+              }
+            />
+          )}
+        />
         <Controller
           control={control}
           name="project_id"
@@ -89,28 +113,6 @@ export const PipelineCreate = () => {
           label="Description"
           name="description"
         />
-        <Stack gap={1}>
-          <Typography variant="body1" fontWeight="bold">
-            Steps
-          </Typography>
-          <Controller
-            control={control}
-            rules={{ required: "This field is required" }}
-            // eslint-disable-next-line
-            defaultValue={null as any}
-            name="steps"
-            render={({ field }) => (
-              <Editor
-                {...field}
-                height="10vh"
-                defaultLanguage="json"
-                onChange={(value) => {
-                  field.onChange(value);
-                }}
-              />
-            )}
-          />
-        </Stack>
         <Controller
           control={control}
           name="event_ids"
@@ -144,33 +146,33 @@ export const PipelineCreate = () => {
                   variant="outlined"
                   error={!!(errors as any)?.event_ids}
                   helperText={(errors as any)?.event_ids?.message}
-                  required
                 />
               )}
             />
           )}
         />
-        <Controller
-          control={control}
-          name="enabled"
-          // eslint-disable-next-line
-          defaultValue={true}
-          render={({ field }) => (
-            <FormControlLabel
-              label="Enabled"
-              control={
-                <Checkbox
-                  {...field}
-                  checked={field.value}
-                  onChange={(event) => {
-                    field.onChange(event.target.checked);
-                  }}
-                />
-              }
-            />
-          )}
-        />
+        <Stack gap={1}>
+          <Typography variant="body1" fontWeight="bold">
+            Steps
+          </Typography>
+          <Controller
+            control={control}
+            rules={{ required: "This field is required" }}
+            // eslint-disable-next-line
+            defaultValue={null as any}
+            name="steps"
+            render={({ field }) => (
+              <Editor
+                {...field}
+                height="30vh"
+                defaultLanguage="json"
+                theme={theme.mode === "light" ? "light" : "vs-dark"}
+              />
+            )}
+          />
+        </Stack>
       </Box>
+      <DevTool control={control} />
     </Create>
   );
 };
