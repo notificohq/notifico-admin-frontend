@@ -44,6 +44,7 @@ import ArchitectureIcon from "@mui/icons-material/Architecture";
 import PersonIcon from "@mui/icons-material/Person";
 import GroupIcon from "@mui/icons-material/Group";
 import RouteIcon from "@mui/icons-material/Route";
+import KeyIcon from "@mui/icons-material/Key";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import TextSnippetIcon from "@mui/icons-material/TextSnippet";
 import { GroupCreate, GroupEdit, GroupList, GroupShow } from "./pages/groups";
@@ -53,6 +54,7 @@ import {
   TemplateList,
   TemplateShow,
 } from "./pages/templates";
+import { CredentialList } from "./pages/credentials";
 
 function App() {
   return (
@@ -137,6 +139,14 @@ function App() {
                     },
                   },
                   {
+                    meta: {
+                      label: "Transport credentials",
+                      icon: <KeyIcon />,
+                    },
+                    name: "credentials",
+                    list: "/credentials",
+                  },
+                  {
                     name: "channels",
                     meta: {
                       hide: true,
@@ -199,6 +209,9 @@ function App() {
                       <Route path="create" element={<TemplateCreate />} />
                       <Route path="show/:id" element={<TemplateShow />} />
                       <Route path="edit/:id" element={<TemplateEdit />} />
+                    </Route>
+                    <Route path="/credentials">
+                      <Route index element={<CredentialList />} />
                     </Route>
                     <Route path="*" element={<ErrorComponent />} />
                   </Route>
