@@ -11,6 +11,7 @@ import { useForm } from "@refinedev/react-hook-form";
 import { Controller, useFieldArray } from "react-hook-form";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { NIL as NIL_UUID } from "uuid";
 
 export const RecipientCreate = () => {
   const {
@@ -50,7 +51,7 @@ export const RecipientCreate = () => {
           name="project_id"
           rules={{ required: "This field is required" }}
           // eslint-disable-next-line
-          defaultValue={null as any}
+          defaultValue={NIL_UUID}
           render={({ field }) => (
             <Autocomplete
               {...projectAutocompleteProps}

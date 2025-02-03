@@ -47,6 +47,8 @@ import RouteIcon from "@mui/icons-material/Route";
 import KeyIcon from "@mui/icons-material/Key";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import TextSnippetIcon from "@mui/icons-material/TextSnippet";
+import Icon from "@mdi/react";
+import { mdiApi } from "@mdi/js";
 import { GroupCreate, GroupEdit, GroupList, GroupShow } from "./pages/groups";
 import {
   TemplateCreate,
@@ -55,6 +57,9 @@ import {
   TemplateShow,
 } from "./pages/templates";
 import { CredentialList } from "./pages/credentials";
+import { ApiKeyList, ApiKeyShow } from "./pages/api_keys";
+import { ApiKeyCreate } from "./pages/api_keys/create";
+import { ApiKeyEdit } from "./pages/api_keys/edit";
 
 function App() {
   return (
@@ -147,6 +152,18 @@ function App() {
                     list: "/credentials",
                   },
                   {
+                    name: "api_keys",
+                    list: "/api-keys",
+                    create: "/api-keys/create",
+                    edit: "/api-keys/edit/:id",
+                    show: "api-keys/show/:id",
+                    meta: {
+                      canDelete: true,
+                      label: "API keys",
+                      icon: <Icon path={mdiApi} />,
+                    },
+                  },
+                  {
                     name: "channels",
                     meta: {
                       hide: true,
@@ -212,6 +229,12 @@ function App() {
                     </Route>
                     <Route path="/credentials">
                       <Route index element={<CredentialList />} />
+                    </Route>
+                    <Route path="/api-keys">
+                      <Route index element={<ApiKeyList />} />
+                      <Route path="create" element={<ApiKeyCreate />} />
+                      <Route path="show/:id" element={<ApiKeyShow />} />
+                      <Route path="edit/:id" element={<ApiKeyEdit />} />
                     </Route>
                     <Route path="*" element={<ErrorComponent />} />
                   </Route>

@@ -1,10 +1,10 @@
 import { Create, useAutocomplete } from "@refinedev/mui";
-import { Box, Autocomplete, TextField } from "@mui/material";
+import { Box, TextField, Autocomplete } from "@mui/material";
 import { useForm } from "@refinedev/react-hook-form";
 import { Controller } from "react-hook-form";
 import { NIL as NIL_UUID } from "uuid";
 
-export const GroupCreate = () => {
+export const ApiKeyCreate = () => {
   const {
     saveButtonProps,
     refineCore: { formLoading },
@@ -62,24 +62,9 @@ export const GroupCreate = () => {
           )}
         />
         <TextField
-          {...register("name", {
+          {...register("description", {
             required: "This field is required",
           })}
-          error={!!(errors as any)?.name}
-          helperText={(errors as any)?.name?.message}
-          margin="normal"
-          fullWidth
-          slotProps={{
-            inputLabel: {
-              shrink: true,
-            },
-          }}
-          type="text"
-          label="Name"
-          name="name"
-        />
-        <TextField
-          {...register("description")}
           error={!!(errors as any)?.description}
           helperText={(errors as any)?.description?.message}
           margin="normal"

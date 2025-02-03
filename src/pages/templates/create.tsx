@@ -4,6 +4,7 @@ import { useForm } from "@refinedev/react-hook-form";
 import { Controller, FormProvider } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 import { TemplateEditor } from "./TemplateEditor";
+import { NIL as NIL_UUID } from "uuid";
 
 export const TemplateCreate = () => {
   const methods = useForm();
@@ -37,7 +38,7 @@ export const TemplateCreate = () => {
             name="project_id"
             rules={{ required: "This field is required" }}
             // eslint-disable-next-line
-            defaultValue={null as any}
+            defaultValue={NIL_UUID}
             render={({ field }) => (
               <Autocomplete
                 {...projectAutocompleteProps}

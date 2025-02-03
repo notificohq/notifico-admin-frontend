@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import { useForm } from "@refinedev/react-hook-form";
 import { Controller } from "react-hook-form";
+import { NIL as NIL_UUID } from "uuid";
 
 export const EventCreate = () => {
   const {
@@ -34,7 +35,7 @@ export const EventCreate = () => {
           name="project_id"
           rules={{ required: "This field is required" }}
           // eslint-disable-next-line
-          defaultValue={null as any}
+          defaultValue={NIL_UUID}
           render={({ field }) => (
             <Autocomplete
               {...projectAutocompleteProps}

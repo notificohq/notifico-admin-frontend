@@ -14,6 +14,7 @@ import { Editor } from "@monaco-editor/react";
 import { DevTool } from "@hookform/devtools";
 import { useContext } from "react";
 import { ColorModeContext } from "../../contexts/color-mode";
+import { NIL as NIL_UUID } from "uuid";
 
 export const PipelineCreate = () => {
   const {
@@ -65,7 +66,7 @@ export const PipelineCreate = () => {
           name="project_id"
           rules={{ required: "This field is required" }}
           // eslint-disable-next-line
-          defaultValue={null as any}
+          defaultValue={NIL_UUID}
           render={({ field }) => (
             <Autocomplete
               {...projectAutocompleteProps}
